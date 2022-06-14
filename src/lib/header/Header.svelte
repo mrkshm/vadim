@@ -4,21 +4,42 @@
 	import { onMount } from "svelte";
 	import { goto } from "$app/navigation";
 	import Close from "../icons/close.svelte";
-	import Menu from "../icons/menu.svelte";
+	import List from "phosphor-svelte/lib/List";
 
 	let mobileMenu = false;
+
+	let bgCol = "bgDark";
+
+	$: switch ($page.url.pathname) {
+		case "/":
+			bgCol = "bgMidnight";
+			break;
+
+		default:
+			bgCol = "bgDark";
+			break;
+	}
+
 	function openMenu() {
 		mobileMenu = true;
 	}
+
 	function closeMenu() {
 		mobileMenu = false;
 	}
+
+	function bgDark() {
+		bgCol = "bgDark";
+		console.log("darkening");
+	}
+
 	function goHome() {
 		switch ($page.url.pathname) {
 			case "/":
 				break;
 			default:
 				goto("/");
+				// bgCol = "bgMidnight";
 				break;
 		}
 	}
@@ -26,79 +47,126 @@
 </script>
 
 <header>
-	<div class="navbar">
+	<div class={`navbar ${bgCol}`}>
 		<h1 on:click={goHome}>Vadim Sher</h1>
 		<div class="menu-icon" on:click={openMenu}>
-			<Menu />
+			<List color="var(--off-white)" size="38px" />
 		</div>
+
+		{#if mobileMenu}
+			<div class="mobile-menu" transition:fly={{ x: 200, duration: 400 }}>
+				<div class="close-icon" on:click={closeMenu}>
+					<Close />
+				</div>
+				<div class="centerflex">
+					<ul>
+						<!-- Musique -->
+						{#if $page.url.pathname.includes("q")}
+							<li class="inactive">Musique</li>
+							<!-- Submenu -->
+							<!-- Concerts -->
+							{#if $page.url.pathname == "/musique"}
+								<li class="inactive first">Concerts</li>
+							{:else}
+								<li class="first" on:click={() => (mobileMenu = false)}>
+									<a href="/musique">Concerts</a>
+								</li>
+							{/if}
+							<!-- Theatre -->
+							{#if $page.url.pathname == "/musique/theatre"}
+								<li class="inactive">Théâtre</li>
+							{:else}
+								<li on:click={() => (mobileMenu = false)}>
+									<a href="/musique/theatre">Théâtre</a>
+								</li>
+							{/if}
+							<!-- Cine-concerts -->
+							{#if $page.url.pathname == "/musique/cine-concerts"}
+								<li class="inactive">Ciné-concerts</li>
+							{:else}
+								<li on:click={() => (mobileMenu = false)}>
+									<a href="/musique/cine-concerts">Ciné-concerts</a>
+								</li>
+							{/if}
+							<!-- Cinéma -->
+							{#if $page.url.pathname == "/musique/cinema"}
+								<li class="last inactive">Cinéma</li>
+							{:else}
+								<li class="last" on:click={() => (mobileMenu = false)}>
+									<a href="/musique/cinema">Cinéma</a>
+								</li>
+							{/if}
+						{:else}
+							<li class="collapsed" on:click={() => (mobileMenu = false)}>
+								<a href="/musique/">Musique</a>
+							</li>
+						{/if}
+
+						<li>Agenda</li>
+						{#if $page.url.pathname == "/biographie"}
+							<li class="inactive">Biographie</li>
+						{:else}
+							<li
+								on:click={() => {
+									bgDark();
+									mobileMenu = false;
+								}}
+							>
+								<a href="biographie">Biographie</a>
+							</li>
+						{/if}
+						<li>Contact</li>
+					</ul>
+				</div>
+			</div>
+		{/if}
 	</div>
-	{#if mobileMenu}
-		<div class="mobile-menu" transition:fly={{ x: 200, duration: 400 }}>
-			<div class="close-icon" on:click={closeMenu}>
-				<Close />
-			</div>
-			<div class="centerflex">
-				<ul>
-					<li on:click={() => (mobileMenu = false)}><a href="/musique/">Musique</a></li>
-					<li>Agenda</li>
-					{#if $page.url.pathname == "/biographie"}
-						<li class="inactive">Biographie</li>
-					{:else}
-						<li on:click={() => (mobileMenu = false)}><a href="biographie">Biographie</a></li>
-					{/if}
-					<li>Contact</li>
-				</ul>
-			</div>
-		</div>
-	{/if}
-	<!-- 
-	<nav>
-		<ul>
-			<li class:active={$page.url.pathname === "/"}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.url.pathname === "/about"}>
-				<a sveltekit:prefetch href="/about">About</a>
-			</li>
-			<li class:active={$page.url.pathname === "/todos"}>
-				<a sveltekit:prefetch href="/todos">Todos</a>
-			</li>
-		</ul>
-	</nav> -->
 </header>
 
 <style>
 	header {
 		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 60px;
-		/* background-color: var(--midnight); */
+		z-index: 20;
 	}
 	.bgDark {
 		background-color: var(--dark);
 	}
-	.inactive {
-		opacity: 50%;
-	}
 	.bgMidnight {
 		background-color: var(--midnight);
 	}
+	.inactive {
+		opacity: 50%;
+	}
+	.collapsed {
+		padding-top: 40px;
+	}
 	.navbar {
+		position: fixed;
+		z-index: 20;
+		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 0 0 4px;
+		padding: 0 8px;
 	}
 
 	.menu-icon {
 		z-index: 0;
+		padding-top: 12px;
+	}
+
+	.first {
+		padding-top: 8px;
+	}
+	.last {
+		padding-bottom: 8px;
 	}
 
 	.centerflex {
 		height: 100%;
 		display: flex;
-		align-items: center;
+		padding-top: 50px;
 		justify-content: center;
-		margin-top: -20px;
 	}
 
 	.close-icon {
@@ -110,7 +178,7 @@
 	.mobile-menu {
 		position: absolute;
 		color: white;
-		height: 100vh;
+		min-height: 100vh;
 		width: 100%;
 		max-width: 500px;
 		background-color: var(--dark);
@@ -122,7 +190,7 @@
 	ul {
 		list-style: none;
 		font-family: var(--font-title);
-		font-size: 32px;
+		font-size: 24px;
 		letter-spacing: 0.1em;
 		text-align: right;
 	}
@@ -130,8 +198,6 @@
 	h1 {
 		color: var(--egg);
 		font-family: var(--font-title);
-		margin: 0;
-		padding: 0;
 		font-size: 32px;
 		letter-spacing: 0.1em;
 		font-weight: 400;
@@ -139,7 +205,7 @@
 
 	header :global(.icon) {
 		color: var(--off-white);
-		padding-top: 6px;
+		margin-top: 12px;
 	}
 
 	/* iPhone 8 Size */

@@ -1,11 +1,17 @@
 <script>
+	import MusicNav from "$lib/musicNav.svelte";
 </script>
 
-<p>Hello from Layout</p>
+<div class="outgrid">
+	<MusicNav />
 
-<main>
-	<slot />
-</main>
+	<main>
+		<slot />
+	</main>
+</div>
 
 <style>
+	.outgrid {
+		display: grid;
+	}
 </style>

@@ -16,7 +16,7 @@
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Vadim Sher" />
 	<style>
 		body {
 			background: var(--midnight);
@@ -34,40 +34,34 @@
 	<h2 on:click={rectify} class={slug}>Pianiste, compositeur,<br />musicien sur scène</h2>
 	<div class="centerlist">
 		<ul>
-			<li class="li1 breathing">Concerts</li>
-			<li class="li2 breathing">Ciné-concerts</li>
-			<li class="li3 breathing">Théâtre</li>
-			<li class="li4 breathing">Cinéma</li>
+			<li class="li1 breathing"><a href="/musique">Concerts</a></li>
+			<li class="li2 breathing"><a href="/musique/cine-concerts">Ciné-concerts</a></li>
+			<li class="li3 breathing"><a href="/musique/theatre">Théâtre</a></li>
+			<li class="li4 breathing"><a href="/musique/cinema">Cinéma</a></li>
 		</ul>
 	</div>
 </section>
 
 <style>
-	.centerlist {
-		display: flex;
-		align-items: center;
-		width: 100vw;
-		margin: 0;
-		padding: 0;
+	.slugsection {
+		margin-top: 10px;
 	}
 
-	section {
-		height: 100%;
-		margin: 0;
-		padding: 0;
+	.centerlist {
+		display: flex;
+		/* width: 100vw; */
+		padding-top: 30px;
 	}
+
 	.image {
 		position: absolute;
 		top: 60px;
 		left: 0;
-		height: calc(100% - 50px);
 		width: 100%;
 		object-fit: cover;
 		object-position: top left;
 		z-index: -10;
 		filter: blur(3);
-		padding: 0;
-		margin: 0;
 	}
 	.h2default {
 		color: var(--egg);
@@ -77,10 +71,8 @@
 		transform: rotate(-24deg);
 		transform-origin: 80% 80%;
 		line-height: 0.9;
-		margin-top: -8px;
 		letter-spacing: 0.07em;
 		padding-left: 4px;
-		padding-top: 20px;
 	}
 
 	:global(.straight) {

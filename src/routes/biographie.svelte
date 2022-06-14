@@ -64,38 +64,37 @@
 			<div class="cv">CV</div>
 		</a>
 	</div>
-	<div class="citation-row">
-		<figure>
-			<figcaption>
-				<cite>{result.acf.citation}</cite>
-				<div class="source">{result.acf.source}</div>
-			</figcaption>
-		</figure>
-		<div class="bio-image-div">
-			<img
-				src={result.acf.imageUrl}
-				alt="Vadim Sher, assis"
-				class={bioImageSizing}
-				on:click={makeItBig}
-			/>
-			{#if bioImageSizing === "bio-image bio-image-big"}
-				<div on:click={makeItBig} class="close-icon">
-					<Close />
-				</div>
-			{/if}
+	<div class="contentSection">
+		<div class="citation-row">
+			<figure>
+				<figcaption>
+					<cite>{result.acf.citation}</cite>
+					<div class="source">{result.acf.source}</div>
+				</figcaption>
+			</figure>
+			<div class="bio-image-div">
+				<img
+					src={result.acf.imageUrl}
+					alt="Vadim Sher, assis"
+					class={bioImageSizing}
+					on:click={makeItBig}
+				/>
+				{#if bioImageSizing === "bio-image bio-image-big"}
+					<div on:click={makeItBig} class="close-icon">
+						<Close />
+					</div>
+				{/if}
+			</div>
 		</div>
-	</div>
-	<div class="bio">
-		{@html result.content.rendered}
+		<div class="bio">
+			{@html result.content.rendered}
+		</div>
 	</div>
 </div>
 
 <style>
 	.content {
 		width: 100%;
-		max-width: var(--column-width);
-		margin: 0;
-		padding: 0;
 		background-color: var(--cream);
 		position: relative;
 	}
@@ -116,6 +115,7 @@
 	}
 
 	.titles {
+		width: 100%;
 		background-color: var(--dark);
 		margin: 0;
 		padding: 8px 4px 16px;
@@ -131,8 +131,6 @@
 		font-size: 32px;
 	}
 	h1 {
-		margin: 0;
-		padding: 0;
 		font-weight: 400;
 		font-size: 32px;
 	}

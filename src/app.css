@@ -16,7 +16,6 @@
 	--warning: #f96900;
 	--heading-color: rgba(0, 0, 0, 0.7);
 	--text-color: #444444;
-	--real100vh: 100vh;
 }
 
 *,
@@ -37,10 +36,6 @@ dl,
 dd {
 	margin: 0;
 	padding: 0;
-}
-
-body {
-	/* height: var(--real100vh); */
 }
 
 ul[role="list"],
