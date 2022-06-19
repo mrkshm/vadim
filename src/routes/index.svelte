@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Vadim Sher - Accueil</title>
 	<meta name="description" content="Vadim Sher" />
 	<style>
 		body {
@@ -23,61 +23,107 @@
 		}
 	</style>
 </svelte:head>
-<!-- <picture class="image">
-	<source media="(max-width: 799px)" srcset="wall_mob.jpg">
-	<source media="(min-width: 800px)" srcset="wall.jpg">
-	<img src="wall_mob.jpg" alt="wall">
-  </picture> -->
-<img class="image" alt="wall" src="wall_mob.jpg" />
 
-<section class="slugsection">
-	<h2 on:click={rectify} class={slug}>Pianiste, compositeur,<br />musicien sur scène</h2>
-	<div class="centerlist">
-		<ul>
-			<li class="li1 breathing"><a href="/musique">Concerts</a></li>
-			<li class="li2 breathing"><a href="/musique/cine-concerts">Ciné-concerts</a></li>
-			<li class="li3 breathing"><a href="/musique/theatre">Théâtre</a></li>
-			<li class="li4 breathing"><a href="/musique/cinema">Cinéma</a></li>
-		</ul>
+<div class="allPage">
+	<!-- BG Image Section -->
+	<img class="image small-screen" alt="wall" src="wall_mob2.jpg" />
+	<img class="image big-screen" alt="wall" src="wall.jpg" />
+
+	<!-- inner container -->
+	<div class="container">
+		<!-- Big Screen Links -->
+		<div class="centerlist big">
+			<ul>
+				<li class="li2 breathing">
+					<a sveltekit:prefetch href="/musique/cine-concerts">Ciné-concerts</a>
+				</li>
+				<li class="li1 breathing"><a sveltekit:prefetch href="/musique">Concerts</a></li>
+				<li class="li3 breathing"><a sveltekit:prefetch href="/musique/theatre">Théâtre</a></li>
+				<li class="li4 breathing"><a sveltekit:prefetch href="/musique/cinema">Cinéma</a></li>
+			</ul>
+		</div>
+		<!-- Small Screen Links -->
+		<div class="centerlist small">
+			<ul>
+				<li class="li1 breathing"><a sveltekit:prefetch href="/musique">Concerts</a></li>
+				<li class="li2 breathing">
+					<a sveltekit:prefetch href="/musique/cine-concerts">Ciné-concerts</a>
+				</li>
+				<li class="li3 breathing"><a sveltekit:prefetch href="/musique/theatre">Théâtre</a></li>
+				<li class="li4 breathing"><a sveltekit:prefetch href="/musique/cinema">Cinéma</a></li>
+			</ul>
+		</div>
+		<div class="bigVad">
+			<div class="bigSlug">Pianiste, compositeur, musicien de scène</div>
+			<div class="heroTitle">Vadim Sher</div>
+		</div>
 	</div>
-</section>
+</div>
 
 <style>
-	.slugsection {
-		margin-top: 10px;
+	.allPage {
+		height: calc(100vh - 80px);
 	}
-
-	.centerlist {
-		display: flex;
-		/* width: 100vw; */
-		padding-top: 30px;
+	.big {
+		display: none;
+		margin-bottom: 20px;
 	}
-
-	.image {
-		position: absolute;
-		top: 60px;
-		left: 0;
-		width: 100%;
-		object-fit: cover;
-		object-position: top left;
-		z-index: -10;
-		filter: blur(3);
+	.small {
+		display: inline;
+		margin-bottom: 0px;
 	}
-	.h2default {
+	.container {
+		max-width: 1400px;
+		height: 82%;
+		margin: auto;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		align-items: end;
+	}
+	.bigVad {
+		display: none;
 		color: var(--egg);
 		font-family: var(--font-title);
-		font-size: 24px;
-		font-weight: 400;
-		transform: rotate(-24deg);
-		transform-origin: 80% 80%;
-		line-height: 0.9;
-		letter-spacing: 0.07em;
-		padding-left: 4px;
+		letter-spacing: 0.1em;
+		margin-bottom: 8px;
+	}
+	.bigSlug {
+		font-size: 3.5vmin;
+		letter-spacing: 0.05em;
+		line-height: 0.5;
+		padding-left: 8px;
+		margin: 0;
+	}
+	.heroTitle {
+		font-size: 16vmin;
+		padding: 0 0 12px 8px;
+		margin: 0;
+		line-height: 1;
+	}
+	.image {
+		position: absolute;
+		left: 0;
+		top: 80px;
+		width: 100vw;
+		object-fit: fill;
+		z-index: -10;
 	}
 
-	:global(.straight) {
-		animation-name: straighten;
-		animation-duration: 12s;
+	.small-screen {
+		top: 50px;
+		height: calc(100vh - 50px);
+		filter: blur(3);
+		display: inline;
+		object-position: top left;
+	}
+
+	.big-screen {
+		display: none;
+		filter: blur(4);
+		top: 60px;
+		height: calc(100vh - 60px);
+		object-fit: fill;
 	}
 
 	.breathing {
@@ -114,19 +160,14 @@
 
 	ul {
 		list-style: none;
-		width: 100%;
+		font-family: var(--font-title);
+		letter-spacing: 0.05em;
 		color: var(--off-white);
-		font-size: 24px;
-		font-weight: 600;
-		padding: 0;
-		margin: 0;
-		padding-top: 80px;
+		font-size: 28px;
+		font-weight: 400;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
-	}
-
-	li {
 		margin: 0;
 		padding: 0;
 	}
@@ -151,5 +192,56 @@
 		align-self: flex-end;
 		animation-delay: 2s;
 		animation-duration: 12s;
+	}
+
+	li {
+		transition: color 2s;
+		color: var(--off-white);
+	}
+	li:hover {
+		color: var(--cream);
+	}
+
+	/* iPad width */
+	@media screen and (min-width: 768px) {
+		.small-screen {
+			display: none;
+		}
+		.big-screen {
+			display: inline;
+		}
+		.big {
+			display: inline;
+		}
+		.small {
+			display: none;
+		}
+
+		ul {
+			font-size: 48px;
+		}
+		.li1 {
+			margin-left: 48px;
+		}
+		.li2 {
+			align-self: flex-start;
+			margin-left: 50%;
+		}
+		.li3 {
+			align-self: flex-end;
+			margin-right: 50px;
+		}
+		.li4 {
+			align-self: center;
+		}
+		.bigVad {
+			display: inline;
+		}
+		.container {
+			height: 100%;
+			grid-template-columns: 1fr;
+			grid-template-rows: 70% 30%;
+			align-items: end;
+		}
 	}
 </style>

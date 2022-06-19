@@ -56,14 +56,16 @@
 <div class="content">
 	<div class="contentSection">
 		{#each concerts as concert}
-			<div class="imagePart">
-				<img class="concertImage" src={concert.acf.imageUrl} alt="Affiche du concert" />
-			</div>
-			<div class="textPart">
-				<h3>{concert.title.rendered}</h3>
-				<div class="distribution">{concert.acf.distribution}</div>
-				<div class="description">{@html concert.content.rendered}</div>
-				<hr />
+			<div class="gridder">
+				<div class="imagePart">
+					<img class="concertImage" src={concert.acf.imageUrl} alt="Affiche du concert" />
+				</div>
+				<div class="textPart">
+					<h3>{concert.title.rendered}</h3>
+					<div class="distribution">{concert.acf.distribution}</div>
+					<div class="description">{@html concert.content.rendered}</div>
+				</div>
+				<hr class="line" />
 			</div>
 		{/each}
 	</div>
@@ -78,6 +80,7 @@
 	}
 	.content {
 		width: 100%;
+		height: 100%;
 		background-color: var(--cream);
 		position: relative;
 		padding: 0 8px;
@@ -85,6 +88,10 @@
 
 	.imagePart {
 		padding: 8px 0;
+		grid-area: imagePart;
+	}
+	.textPart {
+		grid-area: textPart;
 	}
 
 	h3 {
@@ -99,12 +106,17 @@
 		padding: 2px 0;
 	}
 
+	.line {
+		grid-area: line;
+	}
+
 	.distribution {
 		font-weight: 300;
 		font-size: 16px;
 		line-height: 1.2;
 		color: var(--dark);
 		padding: 8px 0;
+		max-width: 450px;
 	}
 
 	.description {
@@ -117,5 +129,60 @@
 		max-width: 150px;
 		max-height: 150px;
 		object-fit: contain;
+	}
+	::-webkit-scrollbar {
+		width: 20px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: var(--dark);
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 12px;
+		width: 8px;
+		border: 0.25em solid var(--dark);
+		background: var(--light);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		opacity: 80%;
+	}
+
+	@media (min-width: 768px) {
+		.concertImage {
+			max-width: 200px;
+			max-height: 200px;
+			object-fit: contain;
+		}
+		.gridder {
+			padding: 12px;
+			display: grid;
+			grid-template-rows: 1fr 20px;
+			align-items: center;
+		}
+		.gridder:nth-child(odd) {
+			grid-template-columns: 1fr 4fr;
+			grid-template-areas:
+				"imagePart textPart"
+				"line line";
+		}
+		.gridder:nth-child(even) {
+			grid-template-columns: 3fr 1fr;
+			grid-template-areas:
+				"textPart imagePart"
+				"line line";
+		}
+
+		.gridder:nth-child(even) .imagePart {
+			justify-self: end;
+			padding-right: 16px;
+		}
+
+		.gridder:nth-child(odd) .imagePart {
+			padding-right: 16px;
+		}
+		.gridder:last-child .line {
+			display: none;
+		}
 	}
 </style>

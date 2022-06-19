@@ -57,13 +57,15 @@
 <div class="content">
 	<div class="contentSection">
 		{#each concerts as concert}
-			<div class="imagePart">
-				<img class="pieceImage" src={concert.acf.imageUrl} alt="affiche du spectacle" />
-			</div>
-			<div class="textPart">
-				<h3>{concert.title.rendered}</h3>
-				<div class="description">{@html concert.content.rendered}</div>
-				<hr />
+			<div class="gridder">
+				<div class="imagePart">
+					<img class="pieceImage" src={concert.acf.imageUrl} alt="affiche du spectacle" />
+				</div>
+				<div class="textPart">
+					<h3>{concert.title.rendered}</h3>
+					<div class="description">{@html concert.content.rendered}</div>
+				</div>
+				<hr class="line" />
 			</div>
 		{/each}
 	</div>
@@ -85,8 +87,14 @@
 
 	.imagePart {
 		padding: 8px 0;
+		grid-area: imagePart;
 	}
-
+	.textPart {
+		grid-area: textPart;
+	}
+	.line {
+		grid-area: line;
+	}
 	h3 {
 		font-family: var(--font-title);
 		font-size: 20px;
@@ -111,5 +119,43 @@
 		max-width: 150px;
 		max-height: 150px;
 		object-fit: contain;
+	}
+
+	@media (min-width: 768px) {
+		.pieceImage {
+			max-width: 200px;
+			max-height: 200px;
+		}
+
+		.gridder {
+			padding: 12px;
+			display: grid;
+			grid-template-rows: 1fr 20px;
+			align-items: center;
+		}
+		.gridder:nth-child(odd) {
+			grid-template-columns: 1fr 4fr;
+			grid-template-areas:
+				"imagePart textPart"
+				"line line";
+		}
+		.gridder:nth-child(even) {
+			grid-template-columns: 3fr 1fr;
+			grid-template-areas:
+				"textPart imagePart"
+				"line line";
+		}
+
+		.gridder:nth-child(even) .imagePart {
+			justify-self: end;
+			padding-right: 16px;
+		}
+
+		.gridder:nth-child(odd) .imagePart {
+			padding-right: 16px;
+		}
+		.gridder:last-child .line {
+			display: none;
+		}
 	}
 </style>

@@ -3,8 +3,9 @@
 	import { page } from "$app/stores";
 	import { onMount } from "svelte";
 	import { goto } from "$app/navigation";
-	import Close from "../icons/close.svelte";
+	import Close from "./icons/close.svelte";
 	import List from "phosphor-svelte/lib/List";
+	import Menu from "./menu.svelte";
 
 	let mobileMenu = false;
 
@@ -30,7 +31,6 @@
 
 	function bgDark() {
 		bgCol = "bgDark";
-		console.log("darkening");
 	}
 
 	function goHome() {
@@ -39,6 +39,7 @@
 				break;
 			default:
 				goto("/");
+				mobileMenu = false;
 				// bgCol = "bgMidnight";
 				break;
 		}
@@ -47,24 +48,25 @@
 </script>
 
 <header>
-	<div class={`navbar ${bgCol}`}>
-		<h1 on:click={goHome}>Vadim Sher</h1>
-		<div class="menu-icon" on:click={openMenu}>
-			<List color="var(--off-white)" size="38px" />
-		</div>
-
-		{#if mobileMenu}
-			<div class="mobile-menu" transition:fly={{ x: 200, duration: 400 }}>
-				<div class="close-icon" on:click={closeMenu}>
-					<Close />
+	<div class="innerContainer">
+		<div class={`navbar ${bgCol}`}>
+			<h1 on:click={goHome}>Vadim Sher</h1>
+			<div>
+				<div class="menu-icon" on:click={openMenu}>
+					<List color="var(--off-white)" />
 				</div>
-				<div class="centerflex">
-					<ul>
-						<!-- Musique -->
-						{#if $page.url.pathname.includes("q")}
-							<li class="inactive">Musique</li>
-							<!-- Submenu -->
-							<!-- Concerts -->
+				<Menu />
+			</div>
+
+			{#if mobileMenu}
+				<div class="mobile-menu" transition:fly={{ x: 200, duration: 400 }}>
+					<div class="close-icon" on:click={closeMenu}>
+						<Close />
+					</div>
+					<div class="centerflex">
+						<ul>
+							<!-- Musique -->
+
 							{#if $page.url.pathname == "/musique"}
 								<li class="inactive first">Concerts</li>
 							{:else}
@@ -90,36 +92,56 @@
 							{/if}
 							<!-- Cinéma -->
 							{#if $page.url.pathname == "/musique/cinema"}
-								<li class="last inactive">Cinéma</li>
+								<li class="inactive">Cinéma</li>
 							{:else}
-								<li class="last" on:click={() => (mobileMenu = false)}>
+								<li on:click={() => (mobileMenu = false)}>
 									<a href="/musique/cinema">Cinéma</a>
 								</li>
 							{/if}
-						{:else}
-							<li class="collapsed" on:click={() => (mobileMenu = false)}>
-								<a href="/musique/">Musique</a>
-							</li>
-						{/if}
+							<!-- Cinéma -->
+							{#if $page.url.pathname == "/musique/discographie"}
+								<li class="last inactive">Discographie</li>
+							{:else}
+								<li class="last" on:click={() => (mobileMenu = false)}>
+									<a href="/musique/discographie">Discographie</a>
+								</li>
+							{/if}
+							<hr />
+							{#if $page.url.pathname == "/agenda"}
+								<li class="inactive">Agenda</li>
+							{:else}
+								<li on:click={() => (mobileMenu = false)}>
+									<a href="/agenda">Agenda</a>
+								</li>
+							{/if}
 
-						<li>Agenda</li>
-						{#if $page.url.pathname == "/biographie"}
-							<li class="inactive">Biographie</li>
-						{:else}
-							<li
-								on:click={() => {
-									bgDark();
-									mobileMenu = false;
-								}}
-							>
-								<a href="biographie">Biographie</a>
-							</li>
-						{/if}
-						<li>Contact</li>
-					</ul>
+							{#if $page.url.pathname == "/biographie"}
+								<li class="inactive">Biographie</li>
+							{:else}
+								<li
+									on:click={() => {
+										mobileMenu = false;
+									}}
+								>
+									<a sveltekit:prefetch href="/biographie">Biographie</a>
+								</li>
+							{/if}
+							{#if $page.url.pathname == "/contact"}
+								<li class="inactive">Contact</li>
+							{:else}
+								<li
+									on:click={() => {
+										mobileMenu = false;
+									}}
+								>
+									<a sveltekit:prefetch href="/contact">Contact</a>
+								</li>
+							{/if}
+						</ul>
+					</div>
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</div>
 	</div>
 </header>
 
@@ -127,12 +149,22 @@
 	header {
 		position: relative;
 		z-index: 20;
+		width: 100%;
+	}
+
+	.innerContainer {
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+	hr {
+		opacity: 10%;
 	}
 	.bgDark {
 		background-color: var(--dark);
 	}
 	.bgMidnight {
-		background-color: var(--midnight);
+		/* background-color: var(--midnight); */
+		background-color: transparent;
 	}
 	.inactive {
 		opacity: 50%;
@@ -143,23 +175,28 @@
 	.navbar {
 		position: fixed;
 		z-index: 20;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		height: 50px;
+		margin: 0;
 		padding: 0 8px;
+		width: 100%;
+		max-width: 1400px;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
 	}
 
 	.menu-icon {
 		z-index: 0;
-		padding-top: 12px;
+		padding-top: 8px;
+		align-self: flex-end;
+		font-size: 36px;
 	}
 
 	.first {
 		padding-top: 8px;
 	}
 	.last {
-		padding-bottom: 8px;
+		padding-bottom: 12px;
 	}
 
 	.centerflex {
@@ -208,11 +245,17 @@
 		margin-top: 12px;
 	}
 
+	@media (min-height: 500px) {
+		ul {
+			font-size: 32px;
+		}
+	}
 	/* iPhone 8 Size */
 	@media only screen and (min-width: 350px) {
 		h1 {
 			font-size: 32px;
 		}
+
 		header :global(.icon) {
 			padding-top: 10px;
 		}
@@ -230,21 +273,37 @@
 		}
 	}
 	/* iPad Size */
-	@media only screen and (min-width: 750px) {
+	@media (min-width: 750px) {
 		h1 {
+			font-size: 48px;
+			min-width: 250px;
+		}
+		ul {
+			font-size: 38px;
+		}
+		li {
+			padding-top: 8px;
+		}
+		.last {
+			padding-bottom: 20px;
+		}
+		.menu-icon {
 			font-size: 48px;
 		}
 		header :global(.icon) {
 			padding-top: 0;
 		}
 		.navbar {
-			padding: 0 0 0 16px;
+			padding: 0 16px 0 16px;
 		}
 	}
 	/* iPad Pro and Desktop */
-	@media only screen and (min-width: 810px) {
+	@media (min-width: 810px) {
 		.menu-icon {
-			visibility: hidden;
+			display: none;
+		}
+		.bgMidnight {
+			/* background-color: transparent; */
 		}
 	}
 </style>

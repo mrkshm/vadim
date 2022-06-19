@@ -56,6 +56,7 @@
 
 <div class="content">
 	<div class="contentSection">
+		<script src="https://player.vimeo.com/api/player.js"></script>
 		{#each pieces as piece}
 			<div class="imagePart">
 				<img class="pieceImage" src={piece.acf.imageUrl} alt="affiche du spectacle" />
@@ -70,6 +71,11 @@
 </div>
 
 <style>
+	.video {
+		height: 150px;
+		width: 150px;
+		overflow: hidden;
+	}
 	hr {
 		background: linear-gradient(to right, #f5ef4e, #d1deff);
 		height: 1px;
