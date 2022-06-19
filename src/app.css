@@ -38,11 +38,6 @@ dd {
 	padding: 0;
 }
 
-ul[role="list"],
-ol[role="list"] {
-	list-style: none;
-}
-
 input,
 button,
 textarea,

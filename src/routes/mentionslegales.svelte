@@ -50,9 +50,7 @@
 	.hebergement {
 		line-height: 1.5;
 	}
-	label {
-		padding-top: 12px;
-	}
+
 	.titles {
 		width: 100%;
 		background-color: var(--dark);
