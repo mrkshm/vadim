@@ -174,13 +174,13 @@
 
 	.li1 {
 		margin-left: 12px;
-		animation-duration: 12s;
+		animation-duration: 15s;
 	}
 	.li2 {
 		align-self: flex-end;
 		padding-right: 8px;
 		animation-delay: 5s;
-		animation-duration: 15s;
+		animation-duration: 17s;
 	}
 	.li3 {
 		margin-left: 48px;
