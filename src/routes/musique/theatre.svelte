@@ -28,7 +28,7 @@
 
 <script>
 	export let result;
-	console.log(result);
+	import Squiggle from "$lib/icons/squiggle.svelte";
 
 	function compare(a, b) {
 		if (a.acf.ordre < b.acf.ordre) {
@@ -56,14 +56,18 @@
 <div class="content">
 	<div class="contentSection">
 		<script src="https://player.vimeo.com/api/player.js"></script>
+
 		{#each pieces as piece}
-			<div class="imagePart">
-				<img class="pieceImage" src={piece.acf.imageUrl} alt="affiche du spectacle" />
-			</div>
-			<div class="textPart">
-				<h3>{piece.title.rendered}</h3>
-				<div class="description">{@html piece.content.rendered}</div>
-				<hr />
+			<div class="gridder">
+				<div class="imagePart">
+					<img class="pieceImage" src={piece.acf.imageUrl} alt="affiche du spectacle" />
+				</div>
+				<div class="textPart">
+					<h3 class="piecetitle">{piece.title.rendered}</h3>
+
+					<div class="description">{@html piece.content.rendered}</div>
+				</div>
+				<hr class="line" />
 			</div>
 		{/each}
 	</div>
@@ -75,6 +79,7 @@
 		width: 150px;
 		overflow: hidden;
 	}
+
 	hr {
 		background: linear-gradient(to right, #f5ef4e, #d1deff);
 		height: 1px;
@@ -90,6 +95,7 @@
 
 	.imagePart {
 		padding: 8px 0;
+		grid-area: imagePart;
 	}
 
 	h3 {
@@ -97,13 +103,22 @@
 		font-size: 20px;
 		line-height: 1.2;
 		letter-spacing: 0.1em;
+		font-weight: 400;
+		padding-bottom: 4px;
+	}
+
+	.piecetitle {
 		font-weight: 600;
+		letter-spacing: 0.05em;
 	}
 
 	.content :global(p) {
 		padding: 2px 0;
 	}
 
+	.line {
+		grid-area: line;
+	}
 	.description {
 		font-size: 16px;
 		line-height: 1.4;
@@ -114,5 +129,48 @@
 		max-width: 150px;
 		max-height: 150px;
 		object-fit: contain;
+	}
+
+	@media (min-width: 768px) {
+		.pieceImage {
+			max-width: 200px;
+			max-height: 200px;
+		}
+
+		.gridder {
+			padding: 12px;
+			display: grid;
+			grid-template-rows: 1fr 20px;
+			align-items: center;
+		}
+		.gridder:nth-child(odd) {
+			grid-template-columns: 1fr 4fr;
+			grid-template-areas:
+				"imagePart textPart"
+				"line line";
+		}
+		.gridder:nth-child(even) {
+			grid-template-columns: 3fr 1fr;
+			grid-template-areas:
+				"textPart imagePart"
+				"line line";
+		}
+
+		.gridder:nth-child(even) .imagePart {
+			justify-self: end;
+			padding-right: 16px;
+		}
+
+		.gridder:nth-child(odd) .imagePart {
+			padding-right: 16px;
+		}
+
+		.gridder:nth-child(odd) .textPart {
+			padding-left: 32px;
+		}
+
+		.gridder:last-child .line {
+			display: none;
+		}
 	}
 </style>

@@ -61,7 +61,7 @@
 					<img class="concertImage" src={concert.acf.imageUrl} alt="Affiche du concert" />
 				</div>
 				<div class="textPart">
-					<h3>{concert.title.rendered}</h3>
+					<h3 class="concertTitle">{concert.title.rendered}</h3>
 					<div class="distribution">{concert.acf.distribution}</div>
 					<div class="description">{@html concert.content.rendered}</div>
 				</div>
@@ -99,7 +99,11 @@
 		font-size: 20px;
 		line-height: 1.2;
 		letter-spacing: 0.1em;
+		font-weight: 400;
+	}
+	.concertTitle {
 		font-weight: 600;
+		letter-spacing: 0.05em;
 	}
 
 	.content :global(p) {

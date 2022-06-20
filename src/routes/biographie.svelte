@@ -18,10 +18,6 @@
 		const response = await fetch("http://musards.fr/wp/vadimsher/wp-json/wp/v2/pages/2");
 		const result = await response.json();
 		return {
-			cache: {
-				maxage: 3000,
-				private: false
-			},
 			props: { result }
 		};
 	}

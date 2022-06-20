@@ -60,6 +60,12 @@
 				<h3><a sveltekit:prefetch href="/musique/cinema">Cinéma</a></h3>
 			{/if}
 
+			{#if $page.url.pathname === "/musique/theatre"}
+				<h3 class="inactive">Théâtre</h3>
+			{:else}
+				<h3><a sveltekit:prefetch href="/musique/theatre">Théâtre</a></h3>
+			{/if}
+
 			{#if $page.url.pathname === "/musique/discographie"}
 				<h3 class="inactive">Discographie</h3>
 			{:else}
@@ -107,8 +113,8 @@
 		font-weight: 300;
 	}
 	.source {
-		padding-top: 4px;
-		opacity: 70%;
+		padding-top: 6px;
+		opacity: 80%;
 	}
 	a {
 		transition: color 400ms ease-in-out;

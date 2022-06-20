@@ -1,5 +1,4 @@
 <script context="module">
-	import { onMount } from "svelte";
 	import { browser } from "$app/env";
 
 	// we don't need any JS on this page, though we'll load

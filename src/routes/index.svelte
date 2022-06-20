@@ -23,7 +23,7 @@
 		}
 	</style>
 </svelte:head>
-
+<div class="yelloLine" />
 <div class="allPage">
 	<!-- BG Image Section -->
 	<img class="image small-screen" alt="wall" src="wall_mob2.jpg" />
@@ -37,7 +37,7 @@
 				<li class="li2 breathing">
 					<a sveltekit:prefetch href="/musique/cine-concerts">Ciné-concerts</a>
 				</li>
-				<li class="li1 breathing"><a sveltekit:prefetch href="/musique">Concerts</a></li>
+				<li class="li1 breathing1"><a sveltekit:prefetch href="/musique">Concerts</a></li>
 				<li class="li3 breathing"><a sveltekit:prefetch href="/musique/theatre">Théâtre</a></li>
 				<li class="li4 breathing"><a sveltekit:prefetch href="/musique/cinema">Cinéma</a></li>
 			</ul>
@@ -61,6 +61,15 @@
 </div>
 
 <style>
+	.yelloLine {
+		width: 2px;
+		height: 100vh;
+		background-color: var(--egg);
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
 	.allPage {
 		height: calc(100vh - 80px);
 		overflow: hidden;
@@ -88,6 +97,7 @@
 		font-family: var(--font-title);
 		letter-spacing: 0.1em;
 		margin-bottom: 8px;
+		margin-left: 8px;
 	}
 	.bigSlug {
 		font-size: 3.5vmin;
@@ -132,6 +142,26 @@
 		animation-delay: 0;
 	}
 
+	.breathing1 {
+		animation: breathe2 infinite ease-in-out;
+		animation-delay: 0;
+	}
+
+	@keyframes breathe2 {
+		0% {
+			scale: 1;
+			transform: translateX(0px);
+		}
+		50% {
+			scale: 1.15;
+			transform: translateX(50px);
+		}
+		100% {
+			scale: 1;
+			transform: translateX(0px);
+		}
+	}
+
 	@keyframes breathe1 {
 		0% {
 			scale: 1;
@@ -141,21 +171,6 @@
 		}
 		100% {
 			scale: 1;
-		}
-	}
-
-	@keyframes straighten {
-		0% {
-			transform: rotate(-24deg);
-		}
-		10% {
-			transform: rotate(0deg);
-		}
-		60% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(-24deg);
 		}
 	}
 
@@ -175,7 +190,7 @@
 
 	.li1 {
 		margin-left: 12px;
-		animation-duration: 15s;
+		animation-duration: 23s;
 	}
 	.li2 {
 		align-self: flex-end;
@@ -186,13 +201,13 @@
 	.li3 {
 		margin-left: 48px;
 		animation-delay: 8s;
-		animation-duration: 10s;
+		animation-duration: 19s;
 	}
 	.li4 {
 		margin-right: 8px;
 		align-self: flex-end;
 		animation-delay: 2s;
-		animation-duration: 12s;
+		animation-duration: 15s;
 	}
 
 	li {
