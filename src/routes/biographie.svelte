@@ -177,6 +177,8 @@
 	}
 	.bio-image {
 		height: 200px;
+		width: 200px;
+		object-fit: contain;
 		/* margin-left: -20px; */
 		transition: all ease-in-out;
 		transition-duration: 400ms;

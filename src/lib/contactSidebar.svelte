@@ -28,7 +28,8 @@
 		font-size: 48px;
 	}
 	.image {
-		width: 85%;
+		width: 75%;
+		object-fit: contain;
 		border-radius: 2px;
 	}
 	.image-big {

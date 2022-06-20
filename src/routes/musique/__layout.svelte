@@ -8,9 +8,7 @@
 	<MusicNav />
 
 	<main>
-		<Transition url={$page.url}>
-			<slot />
-		</Transition>
+		<slot />
 	</main>
 </div>
 

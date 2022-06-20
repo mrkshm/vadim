@@ -227,7 +227,7 @@
 		}
 		.innerContent {
 			display: grid;
-			grid-template-columns: 35% 1fr;
+			grid-template-columns: 350px 1fr;
 			grid-template-rows: 1fr;
 			/* height: calc(100vh - 130px); */
 		}
