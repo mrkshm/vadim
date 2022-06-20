@@ -1,5 +1,5 @@
 <script context="module">
-	import { browser, dev } from "$app/env";
+	import { browser } from "$app/env";
 	import BioSidebar from "$lib/bioSidebar.svelte";
 
 	// we don't need any JS on this page, though we'll load
