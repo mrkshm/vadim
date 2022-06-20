@@ -45,25 +45,25 @@
 			{#if $page.url.pathname === "/musique"}
 				<h3 class="inactive">Concerts</h3>
 			{:else}
-				<h3><a href="/musique">Concerts</a></h3>
+				<h3><a sveltekit:prefetch href="/musique">Concerts</a></h3>
 			{/if}
 
 			{#if $page.url.pathname === "/musique/cine-concerts"}
 				<h3 class="inactive">Ciné-concerts</h3>
 			{:else}
-				<h3><a href="/musique/cine-concerts">Ciné-concerts</a></h3>
+				<h3><a sveltekit:prefetch href="/musique/cine-concerts">Ciné-concerts</a></h3>
 			{/if}
 
 			{#if $page.url.pathname === "/musique/cinema"}
 				<h3 class="inactive">Cinéma</h3>
 			{:else}
-				<h3><a href="/musique/cinema">Cinéma</a></h3>
+				<h3><a sveltekit:prefetch href="/musique/cinema">Cinéma</a></h3>
 			{/if}
 
 			{#if $page.url.pathname === "/musique/discographie"}
 				<h3 class="inactive">Discographie</h3>
 			{:else}
-				<h3><a href="/musique/discographie">Discographie</a></h3>
+				<h3><a sveltekit:prefetch href="/musique/discographie">Discographie</a></h3>
 			{/if}
 		</div>
 		<figure>

@@ -71,7 +71,7 @@
 								<li class="inactive first">Concerts</li>
 							{:else}
 								<li class="first" on:click={() => (mobileMenu = false)}>
-									<a href="/musique">Concerts</a>
+									<a sveltekit:prefetch href="/musique">Concerts</a>
 								</li>
 							{/if}
 							<!-- Theatre -->
@@ -79,7 +79,7 @@
 								<li class="inactive">Théâtre</li>
 							{:else}
 								<li on:click={() => (mobileMenu = false)}>
-									<a href="/musique/theatre">Théâtre</a>
+									<a sveltekit:prefetch href="/musique/theatre">Théâtre</a>
 								</li>
 							{/if}
 							<!-- Cine-concerts -->
@@ -87,7 +87,7 @@
 								<li class="inactive">Ciné-concerts</li>
 							{:else}
 								<li on:click={() => (mobileMenu = false)}>
-									<a href="/musique/cine-concerts">Ciné-concerts</a>
+									<a sveltekit:prefetch href="/musique/cine-concerts">Ciné-concerts</a>
 								</li>
 							{/if}
 							<!-- Cinéma -->
@@ -95,7 +95,7 @@
 								<li class="inactive">Cinéma</li>
 							{:else}
 								<li on:click={() => (mobileMenu = false)}>
-									<a href="/musique/cinema">Cinéma</a>
+									<a sveltekit:prefetch href="/musique/cinema">Cinéma</a>
 								</li>
 							{/if}
 							<!-- Cinéma -->
@@ -103,7 +103,7 @@
 								<li class="last inactive">Discographie</li>
 							{:else}
 								<li class="last" on:click={() => (mobileMenu = false)}>
-									<a href="/musique/discographie">Discographie</a>
+									<a sveltekit:prefetch href="/musique/discographie">Discographie</a>
 								</li>
 							{/if}
 							<hr />
@@ -111,7 +111,7 @@
 								<li class="inactive">Agenda</li>
 							{:else}
 								<li on:click={() => (mobileMenu = false)}>
-									<a href="/agenda">Agenda</a>
+									<a sveltekit:prefetch href="/agenda">Agenda</a>
 								</li>
 							{/if}
 
