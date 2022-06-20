@@ -144,7 +144,7 @@
 		}
 
 		.inactive {
-			opacity: 60%;
+			opacity: 70%;
 		}
 	}
 </style>
