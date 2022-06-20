@@ -1,5 +1,8 @@
 import mail from "@sendgrid/mail";
-mail.setApiKey(import.meta.env.VITE_MAILAPI);
+import dotenv from "dotenv";
+dotenv.config();
+
+mail.setApiKey(process.env.VITE_MAILAPI);
 export async function post(event) {
 	console.log(event);
 	const body = await event.request.formData();

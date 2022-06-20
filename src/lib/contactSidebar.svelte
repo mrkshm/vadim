@@ -59,19 +59,4 @@
 	.cv {
 		align-self: end;
 	}
-	button {
-		background-color: var(--light);
-		color: var(--off-white);
-		border: none;
-		padding: 12px 12px;
-		border-radius: 4px;
-		font-size: 18px;
-		font-weight: 400;
-		letter-spacing: 0.05em;
-		width: 90%;
-	}
-	button:hover {
-		opacity: 90%;
-		color: white;
-	}
 </style>
