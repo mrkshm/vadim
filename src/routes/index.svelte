@@ -63,6 +63,7 @@
 <style>
 	.allPage {
 		height: calc(100vh - 80px);
+		overflow: hidden;
 	}
 	.big {
 		display: none;

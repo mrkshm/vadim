@@ -185,14 +185,6 @@
 		transition: all ease-in-out;
 		transition-duration: 400ms;
 	}
-	.bio-image-big {
-		position: absolute;
-		height: calc(100vh - 100px);
-		width: 100vw;
-		object-fit: contain;
-		top: 0px;
-		right: 0px;
-	}
 
 	figure {
 		margin: 0;
@@ -247,9 +239,10 @@
 			padding-right: 32px;
 			overflow: hidden scroll;
 		}
-		p {
+		.bio:global(p) {
 			padding-bottom: 8px;
 		}
+
 		::-webkit-scrollbar {
 			width: 20px;
 		}
