@@ -13,7 +13,7 @@ function Layout({ children }: Props) {
     <div className={`bg-black`}>
       <div
         className={`relative h-screen w-screen max-w-screen-2xl m-auto ${
-          currentPage === "/" ? "bg-black" : "bg-dark"
+          currentPage === "/" ? "bg-black z-0" : "bg-dark"
         }`}
       >
         <div>

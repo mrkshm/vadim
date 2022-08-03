@@ -3,7 +3,6 @@ import ReactHowler from "react-howler";
 import { useStore } from "../lib/playStore";
 import { useRef, useState, useMemo, useEffect } from "react";
 import { Play, Pause, SkipBack, SkipForward } from "phosphor-react";
-import { Track } from "../lib/types";
 
 interface PlayerBarProps {
   currentPage: string;
@@ -21,10 +20,9 @@ function PlayerBar({ currentPage }: PlayerBarProps) {
 
   const setActiveTrack = (arg: number) => setActive(arg);
 
-  useEffect(() => {
+  useMemo(() => {
     fetchData();
-    setActiveTrack(0);
-  }, []);
+  }, [fetchData]);
 
   let tracks = useStore((state) => state.tracks);
 
