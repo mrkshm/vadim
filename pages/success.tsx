@@ -46,9 +46,10 @@ const Success: NextPage = ({ bio }: any) => {
             <Link href="mentions-legales">→ Mentions légales</Link>
           </div>
         </div>
-        <div className="mt-8 bg-cream h-[calc(100%-32px)] overflow-x-hidden overflow-y-scroll py-6 px-6 text-textColor contentfulText">
-          {documentToReactComponents(text, options)}
-          <ContactForm />
+        <div className="mt-8 bg-cream text-lg h-[calc(100%-32px)] overflow-x-hidden overflow-y-scroll py-6 px-6 text-textColor contentfulText">
+          Votre message à été anvoyé.
+          <br />
+          Merci.
         </div>
       </div>
     </div>
