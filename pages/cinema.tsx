@@ -10,7 +10,7 @@ const Cinema: NextPage = ({ concerts }: any) => {
   return (
     <div className="pt-14 text-textColor">
       <Head>
-        <title>Vadim Sher - Concerts</title>
+        <title>Vadim Sher - Cinéma</title>
         <meta name="description" content="Vadim Sher" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -21,8 +21,8 @@ const Agenda: NextPage = ({ sidebar, agendaItems }: any) => {
       <Head>
         <title>Vadim Sher - Agenda</title>
         <meta
-          name="Vadim Sher"
-          content="Vadim Sher - Pianiste, compositeur, musicien de scène"
+          name="description"
+          content="Vadim Sher - Pianiste, compositeur, musicien de scène."
         />
         <link rel="icon" href="/favicon.png" />
       </Head>

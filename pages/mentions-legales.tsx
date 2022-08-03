@@ -18,7 +18,7 @@ const MentionsLegales: NextPage = ({ contact }: any) => {
   return (
     <div className="pt-14 text-textColor">
       <Head>
-        <title>Vadim Sher - Contact</title>
+        <title>Vadim Sher - Mentions légales</title>
         <meta
           name="Vadim Sher"
           content="Vadim Sher - Pianiste, compositeur, musicien de scène"
