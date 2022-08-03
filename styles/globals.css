@@ -1,5 +1,56 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&display=swap");
 
+body {
+  /* background-color: #000; */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.contentfulText p {
+  margin-bottom: 8px;
+}
+
+.contentfulText a {
+  color: steelblue;
+}
+
+.contentfulCardText p {
+  margin-bottom: 24px;
+}
+
+.contentfulCardText a {
+  color: steelblue;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #1c3140, rgb(52, 70, 81));
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  width: 8px;
+  border: 0.25em solid rgb(52, 70, 81);
+  background: #59888e;
+}
+::-webkit-scrollbar-thumb:hover {
+  opacity: 80%;
+  color: green;
+}
+
+hr {
+  background: linear-gradient(to right, #f5ef4e, #d1deff);
+  height: 1px;
+  border: none;
+  margin: 24px 0px;
+  grid-area: line;
+}
