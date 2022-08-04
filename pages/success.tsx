@@ -13,9 +13,7 @@ const options = {
   },
 };
 
-const Success: NextPage = ({ bio }: any) => {
-  const { text, image } = bio.fields;
-
+const Success: NextPage = () => {
   return (
     <div className="pt-14 text-textColor">
       <MetaHead title="Contact" />
@@ -34,8 +32,8 @@ const Success: NextPage = ({ bio }: any) => {
           <div className="w-full px-4 pt-2">
             <picture>
               <img
-                alt={image.fields.description}
-                src={`https:${image.fields.file.url}`}
+                alt="Vadim Sher avec vélo"
+                src="https://images.ctfassets.net/fsfv0idsnzee/o8gXArU7KZcT5MUIivAzr/0341150a78b040716d98e71a2d9ba145/vadim_velo.jpeg"
                 className="w-[85%]"
               ></img>
             </picture>
@@ -53,15 +51,5 @@ const Success: NextPage = ({ bio }: any) => {
     </div>
   );
 };
-
-export async function getStaticProps() {
-  const res = await getEntry("2uoxZIJjBKRiBMY4dm3FFV");
-
-  return {
-    props: {
-      bio: res,
-    },
-  };
-}
 
 export default Success;
