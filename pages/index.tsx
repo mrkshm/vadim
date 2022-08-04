@@ -20,13 +20,13 @@ const Home: NextPage = () => {
             src="/wall.jpg"
           />
           <img
-            className="absolute top-8 left-0 object-cover w-full h-[calc(100%-150px)] md:hidden -z-10"
+            className="absolute top-8 left-0 object-fill w-full h-full md:hidden -z-10"
             alt="fond d'écran"
             src="/wall_mob.jpg"
           />
         </picture>
-        <div className=" h-full grid grid-cols-1 grid-rows-[60%_1fr]">
-          <ul className="text-offWhite px-8 self-end w-full relative text-4xl font-titleFont tracking-widest flex flex-col gap-8">
+        <div className=" h-full grid grid-cols-1 md:grid-rows-[60%_1fr]">
+          <ul className="text-offWhite pt-32 md:pt-0 px-8 self-center md:self-end w-full relative text-4xl font-titleFont tracking-widest flex flex-col gap-8">
             <motion.li
               className="self-center hover:text-egg hover:opacity-70 duration-1000"
               style={{ originX: 0, originY: 0 }}

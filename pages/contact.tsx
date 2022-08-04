@@ -28,7 +28,7 @@ const Contact: NextPage = ({ bio }: any) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       {/* Sidebar */}
-      <div className="bg-dark h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr,8fr]">
+      <div className="bg-dark md:h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr,8fr]">
         <div className="bg-dark text-offWhite h-full overflow-x-hidden overflow-y-auto no-scrollbar">
           <div className="p-4 font-titleFont text-5xl tracking-wider">
             Contact
@@ -62,6 +62,7 @@ export async function getStaticProps() {
     props: {
       bio: res,
     },
+    revalidate: 20,
   };
 }
 

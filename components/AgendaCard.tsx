@@ -47,16 +47,18 @@ export default function AgendaCard({ spectacle }: any) {
           </picture>
 
           <div className="">
-            <div className="text-4xl font-titleFont">
+            <div className="text-4xl font-titleFont pt-8 md:pt-0">
               {spectacle.fields.title}
             </div>
             <div className="contentfulCardText py-8">
               {documentToReactComponents(spectacle.fields.description, options)}
             </div>
 
-            <div className="md:w-[60%]">
-              <VideoPlayer url={spectacle.fields.video} />
-            </div>
+            {spectacle.fields.video ? (
+              <div className="md:w-[60%]">
+                <VideoPlayer url={spectacle.fields.video} />
+              </div>
+            ) : null}
           </div>
         </div>
         <hr />

@@ -59,6 +59,7 @@ export default function AlbumCard({ concert }: ConcertProps) {
           <div className="w-[90%]">
             <picture className="max-w-[90%]">
               <img
+                className="max-w-[90%]"
                 src={`https:${concert.fields.cover.fields.file.url}`}
                 alt={concert.fields.cover.fields.description}
               />

@@ -2,7 +2,7 @@ function ContactForm() {
   return (
     <div>
       <form
-        className="flex flex-col gap-4 pt-4 w-[85%] max-w-[500px]"
+        className="flex flex-col gap-4 pt-4 w-full md:w-[85%] max-w-[500px]"
         name="contact"
         action="/success"
         method="POST"

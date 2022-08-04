@@ -37,6 +37,7 @@ export async function getStaticProps() {
     props: {
       concerts: res.items,
     },
+    revalidate: 20,
   };
 }
 

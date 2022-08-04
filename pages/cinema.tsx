@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import ConcertCard from "../components/ConcertCard";
+import CinemaCard from "../components/CinemaCard";
 import SidebarMusique from "../components/SidebarMusique";
 import { getEntries } from "../lib/contentful";
-import { Concert } from "../lib/types";
-import { sortAsc } from "../lib/helpers";
+import { Film } from "../lib/types";
+import { sortDesc } from "../lib/helpers";
 
 const Cinema: NextPage = ({ concerts }: any) => {
   return (
@@ -12,16 +12,16 @@ const Cinema: NextPage = ({ concerts }: any) => {
       <Head>
         <title>Vadim Sher - Cinéma</title>
         <meta name="description" content="Vadim Sher" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
-      <div className="bg-dark h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr_8fr]">
+      <div className="bg-dark md:h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr_8fr]">
         {/* Sidebar */}
         <div className=" overflow-x-hidden overflow-y-auto no-scrollbar">
           <SidebarMusique />
         </div>
-        <main className="relative mt-8 bg-cream h-[100%-30px] overflow-x-hidden overflow-y-scroll py-6 px-6 text-textColor">
-          {concerts.sort(sortAsc).map((concert: Concert) => (
-            <ConcertCard key={concert.sys.id} concert={concert} />
+        <main className="relative mt-8 bg-cream h-[100%-30px] overflow-x-hidden overflow-y-scroll py-6 mx-0 px-2 md:px-6 text-textColor">
+          {concerts.sort(sortDesc).map((concert: Film) => (
+            <CinemaCard key={concert.sys.id} concert={concert} />
           ))}
         </main>
       </div>
@@ -30,12 +30,13 @@ const Cinema: NextPage = ({ concerts }: any) => {
 };
 
 export async function getStaticProps() {
-  const res = await getEntries("cineConcert");
+  const res = await getEntries("cinema");
 
   return {
     props: {
       concerts: res.items,
     },
+    revalidate: 20,
   };
 }
 

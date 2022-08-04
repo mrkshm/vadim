@@ -17,7 +17,7 @@ function Layout({ children }: Props) {
         }`}
       >
         <div>
-          <div className="md:hidden">
+          <div className="md:hidden fixed w-full bg-dark z-30">
             <NavMobile currentPage={currentPage} />
           </div>
           <div className="hidden md:inline">

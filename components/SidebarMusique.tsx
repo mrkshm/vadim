@@ -116,8 +116,8 @@ function SidebarMusique() {
       <div className="p-4 font-titleFont text-5xl tracking-wider">
         {pageTitle}
       </div>
-      <div className="w-full px-4 py-12">
-        <ul className="flex flex-col gap-6 font-titleFont tracking-wider text-4xl">
+      <div className="hidden md:inline w-full px-4 py-12">
+        <ul className="flex flex-col gap-6 font-titleFont tracking-wider text-4xl md:px-4">
           {/* Concerts */}
           {currentPage === "/concerts" ? (
             <li className="opacity-50">Concerts</li>

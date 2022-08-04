@@ -21,7 +21,11 @@ interface NavMobileProps {
 
 export default function NavMobile({ currentPage }: NavMobileProps) {
   return (
-    <div className="absolute w-full flex justify-between px-4 py-3">
+    <div
+      className={`absolute w-full flex justify-between px-4 py-3 ${
+        currentPage === "/" ? "bg-black" : "bg-dark"
+      }`}
+    >
       <div className="text-3xl text-egg font-titleFont tracking-widest">
         {currentPage === "/" ? "Vadim Sher" : <Link href="/">Vadim Sher</Link>}
       </div>

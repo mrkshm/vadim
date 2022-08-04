@@ -27,12 +27,12 @@ const Agenda: NextPage = ({ sidebar, agendaItems }: any) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       {/* Sidebar */}
-      <div className="bg-dark h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr,8fr]">
+      <div className="bg-dark md:h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr,8fr]">
         <div className="bg-dark text-offWhite h-full overflow-x-hidden overflow-y-auto no-scrollbar">
           <div className="p-4 font-titleFont text-5xl tracking-wider">
-            Contact
+            Agenda
           </div>
-          <div className="w-full px-4 pt-2">
+          <div className="w-full px-4 pt-2 hidden md:block">
             <picture>
               <img
                 alt={image1.fields.description}
@@ -67,6 +67,7 @@ export async function getStaticProps() {
       sidebar: res,
       agendaItems: agendaItems,
     },
+    revalidate: 20,
   };
 }
 

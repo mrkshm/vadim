@@ -1,3 +1,4 @@
+import { m } from "framer-motion";
 import { PlayCircle } from "phosphor-react";
 import { useStore } from "../lib/playStore";
 
@@ -38,7 +39,8 @@ function Mp3Comp(mp3: any) {
           )}
         </div>
       </div>
-      <div className="md:hidden">
+      <div className="md:hidden mb-2">
+        <div>Extrait : {mp3.mp3.fields.title}</div>
         <audio controls={true} src={mp3.mp3.fields.file.url} />
       </div>
     </div>

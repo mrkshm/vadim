@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState, Fragment } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import VideoPlayer from "./VideoPlayer";
-import { Concert } from "../lib/types";
+import { Film } from "../lib/types";
 import Mp3Comp from "./Mp3Comp";
 import ImageComp from "./ImageComp";
 
@@ -17,11 +17,11 @@ const options = {
 };
 
 interface ConcertProps {
-  concert: Concert;
+  concert: Film;
   // key: string;
 }
 
-export default function ConcertCard({ concert }: ConcertProps) {
+export default function CinemaCard({ concert }: ConcertProps) {
   const [isOpen, setIsOpen] = useState(false);
   function closeModal() {
     setIsOpen(false);
@@ -56,7 +56,7 @@ export default function ConcertCard({ concert }: ConcertProps) {
     <div ref={ref} className="text-textColor">
       <motion.div animate={animation}>
         <div className="grid md:grid-cols-[45%_55%] md:w-full">
-          <div className="w-full md:w-[100%]">
+          <div className="w-full">
             {concert.fields.video ? (
               <div className="mb-2 max-w-[95%]">
                 <VideoPlayer url={concert.fields.video} />
@@ -64,14 +64,14 @@ export default function ConcertCard({ concert }: ConcertProps) {
             ) : (
               <picture className="max-w-[90%]">
                 <img
-                  src={`https:${concert.fields.images[0].fields.file.url}`}
-                  alt={concert.fields.images[0].fields.description}
-                  className="max-w-[95%] md:max-w-[85%]"
+                  src={`https:${concert.fields.image.fields.file.url}`}
+                  alt={concert.fields.image.fields.description}
+                  className="max-w-[95%]"
                 />
               </picture>
             )}
           </div>
-          <div className="mt-4 md:mt-0 w-screen md:w-full">
+          <div className="mt-4 md:mt-0 md:mx-4 w-screen">
             <div className="text-4xl font-titleFont">
               {concert.fields.title}
             </div>
@@ -79,7 +79,7 @@ export default function ConcertCard({ concert }: ConcertProps) {
               {concert.fields.distribution}
             </div>
 
-            <div className="pb-4 contentfulText w-screen md:w-full pr-2">
+            <div className="pb-4 contentfulText w-screen pr-2">
               {documentToReactComponents(concert.fields.description, options)}
             </div>
 
@@ -93,15 +93,17 @@ export default function ConcertCard({ concert }: ConcertProps) {
                 : null}
             </div>
             {/* Images */}
-            <div className="mt-4 md:mt-6 md:px-2">
+            <div className="mt-4 md:mt-0">
               <div className="flex">
-                {concert.fields.images.map((image, i) => (
-                  <ImageComp
-                    image={image}
-                    key={image.sys.id}
-                    odd={i === 0 || i % 2 === 0 ? false : true}
-                  />
-                ))}
+                {concert.fields.video ? (
+                  <picture>
+                    <img
+                      src={`https:${concert.fields.image.fields.file.url}`}
+                      alt={concert.fields.image.fields.description}
+                      className="max-w-[150px]"
+                    />
+                  </picture>
+                ) : null}
               </div>
             </div>
           </div>

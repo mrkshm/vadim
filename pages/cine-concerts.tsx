@@ -14,12 +14,12 @@ const CineConcerts: NextPage = ({ concerts }: any) => {
         <meta name="description" content="Vadim Sher" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-dark h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr_8fr]">
+      <div className="bg-dark md:h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr_8fr]">
         {/* Sidebar */}
-        <div className=" overflow-x-hidden overflow-y-auto no-scrollbar">
+        <div className="overflow-x-hidden overflow-y-auto no-scrollbar">
           <SidebarMusique />
         </div>
-        <main className="relative mt-8 bg-cream h-[100%-30px] overflow-x-hidden overflow-y-scroll py-6 px-6 text-textColor">
+        <main className="relative mt-8 bg-cream md:h-[100%-30px] overflow-x-hidden overflow-y-scroll py-6 px-2 md:px-6 text-textColor">
           {concerts.sort(sortAsc).map((concert: Concert) => (
             <ConcertCard key={concert.sys.id} concert={concert} />
           ))}
@@ -36,6 +36,7 @@ export async function getStaticProps() {
     props: {
       concerts: res.items,
     },
+    revalidate: 20,
   };
 }
 
