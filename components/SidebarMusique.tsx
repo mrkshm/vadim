@@ -174,7 +174,7 @@ function SidebarMusique() {
         <figure>
           <figcaption>
             <cite className="leading-snug">{citation}</cite>
-            <div className="pt-4">{source}</div>
+            <div className="pt-2">{source}</div>
           </figcaption>
         </figure>
       </div>

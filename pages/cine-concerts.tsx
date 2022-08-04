@@ -1,19 +1,22 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import ConcertCard from "../components/ConcertCard";
 import SidebarMusique from "../components/SidebarMusique";
 import { getEntries } from "../lib/contentful";
 import { Concert } from "../lib/types";
 import { sortAsc } from "../lib/helpers";
+import Script from "next/script";
+import MetaHead from "../components/MetaHead";
 
 const CineConcerts: NextPage = ({ concerts }: any) => {
   return (
     <div className="pt-14 text-textColor">
-      <Head>
-        <title>Vadim Sher - Ciné-concerts</title>
-        <meta name="description" content="Vadim Sher" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaHead title="Ciné-concerts" />
+      <Script
+        async
+        defer
+        data-website-id="fafc8256-3873-4ad6-adfa-9dc8ffc13593"
+        src="https://s.abla.io/abla.js"
+      ></Script>
       <div className="bg-dark md:h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr_8fr]">
         {/* Sidebar */}
         <div className="overflow-x-hidden overflow-y-auto no-scrollbar">

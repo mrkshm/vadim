@@ -2,8 +2,9 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { getEntry } from "../lib/contentful";
-import Head from "next/head";
 import ContactForm from "../components/ContactForm";
+import Script from "next/script";
+import MetaHead from "../components/MetaHead";
 
 const options = {
   renderText: (text: any) => {
@@ -19,14 +20,13 @@ const Contact: NextPage = ({ bio }: any) => {
 
   return (
     <div className="pt-14 text-textColor">
-      <Head>
-        <title>Vadim Sher - Contact</title>
-        <meta
-          name="Vadim Sher"
-          content="Vadim Sher - Pianiste, compositeur, musicien de scène"
-        />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <MetaHead title="Contact" />
+      <Script
+        async
+        defer
+        data-website-id="fafc8256-3873-4ad6-adfa-9dc8ffc13593"
+        src="https://s.abla.io/abla.js"
+      ></Script>
       {/* Sidebar */}
       <div className="bg-dark md:h-[calc(100vh-106px)] grid grid-cols-1 md:grid-cols-[3fr,8fr]">
         <div className="bg-dark text-offWhite h-full overflow-x-hidden overflow-y-auto no-scrollbar">
