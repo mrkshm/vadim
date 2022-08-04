@@ -145,7 +145,7 @@ function PlayerBar({ currentPage }: PlayerBarProps) {
                 </div>
               </div>
             </div>
-            <div className="px-4 flex items-center w-[60%]">
+            <div className="px-4 flex items-center w-[55%]">
               <div className="w-full">
                 <ReactHowler
                   playing={playing}
@@ -156,7 +156,7 @@ function PlayerBar({ currentPage }: PlayerBarProps) {
                   onEnd={onEnd}
                 />
                 <div className="flex items-center">
-                  <div className="flex items-center gap-4 w-[15%] text-lg">
+                  <div className="flex items-center gap-4 w-[15%] min-w-[80px] text-lg">
                     <div className="playerSkipBack">
                       <SkipBack onClick={() => previousTrack()} />
                     </div>
@@ -176,12 +176,12 @@ function PlayerBar({ currentPage }: PlayerBarProps) {
                       <SkipForward onClick={() => nextTrack()} />
                     </div>
                   </div>
-                  <div className="px-8 gap-4 flex items-center w-[85%]">
+                  <div className="px-8 gap-4 flex items-center w-full">
                     <div>{displaySeekTime}</div>
                     <div className="pt-[5px] w-full ">
                       <input
                         disabled
-                        className="w-[95%]"
+                        className="w-[100%]"
                         type="range"
                         min="1"
                         max={duration ? duration.toFixed(2) : 0}
@@ -193,10 +193,11 @@ function PlayerBar({ currentPage }: PlayerBarProps) {
                 </div>
               </div>
             </div>
-            <div className="flex items-center w-[20%]">
+            <div className="flex items-center w-[25%] justify-end justify-self-end">
               <div>Volume : {displayVolume}</div>
               <label className="flex items-center px-2">
                 <input
+                  className="max-w-[120px]"
                   type="range"
                   min="0"
                   max="1"
