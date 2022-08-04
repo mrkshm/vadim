@@ -137,10 +137,10 @@ function PlayerBar({ currentPage }: PlayerBarProps) {
                 )}
               </div>
               <div className="px-4 font-light">
-                <div className="m-0 p-0 text-sm leading-snug">
-                  {tracks[activeTrack].title} -
+                <div className="m-0 p-0 text-md leading-snug">
+                  {tracks[activeTrack].title}
                 </div>
-                <div className="m-0 p-0 text-sm leading-none">
+                <div className="m-0 p-0 text-sm leading-none opacity-70">
                   {tracks[activeTrack].spectacle}
                 </div>
               </div>
