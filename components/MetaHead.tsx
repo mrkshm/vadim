@@ -10,7 +10,7 @@ export default function MetaHead({ title }: MetaHeadProps) {
       <title>Vadim Sher - {title}</title>
       <meta
         name="description"
-        content="Vadim Sher - Pianiste, compositeur, musicien de scène"
+        content="Vadim Sher est pianiste et compositeur spécialisé en musique de théâtre et de cinéma. Il est directeur artistique de la Compagnie MUSARDS basée à Paris."
       />
       <link rel="icon" href="/favicon.png" />
     </Head>

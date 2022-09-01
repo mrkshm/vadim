@@ -1,4 +1,5 @@
 import { useInView } from "react-intersection-observer";
+import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState, Fragment } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -70,8 +71,23 @@ export default function AlbumCard({ concert }: ConcertProps) {
           </div>
           <div className="flex flex-col justify-between h-full">
             <div className="">
-              <div className="text-4xl font-titleFont">
-                {concert.fields.title}
+              <div className="text-4xl font-titleFont flex gap-12">
+                <div>{concert.fields.title}</div>
+                {concert.fields.musards ? (
+                  <Link
+                    href={`https://musards.fr/creations/${concert.fields.lienMusards}`}
+                  >
+                    <a>
+                      <picture>
+                        <img
+                          className="w-12 h-12"
+                          src="/musards_logo.jpg"
+                          alt="Musards Logo"
+                        />
+                      </picture>
+                    </a>
+                  </Link>
+                ) : null}
               </div>
 
               <div className="pt-8 pb-4 contentfulText">

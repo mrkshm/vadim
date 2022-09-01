@@ -13,6 +13,8 @@ export interface Concert {
     description: any;
     distribution: string;
     order: number;
+    musards: boolean;
+    lienMusards: string;
     mp3s: [
       {
         fields: {
